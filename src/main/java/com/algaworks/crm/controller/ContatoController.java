@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,6 +32,13 @@ public class ContatoController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public Contato adicionar(@RequestBody Contato contato) {
 		return contatoRepository.save(contato);
+	}
+	
+	
+	@DeleteMapping
+	public String deletar(@RequestBody Contato contato) {
+		contatoRepository.delete(contato);
+		return "contato deletado";
 	}
 	
 
